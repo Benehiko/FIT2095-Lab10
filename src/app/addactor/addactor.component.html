@@ -1,0 +1,11 @@
+<div class="section">
+  <div class="form-group">
+    <label for="actorName">Full Name</label>
+    <input type="text" class="form-control" id="actorName" [(ngModel)]="fullName">
+  </div>
+  <div class="form-group">
+    <label for="actorYearAdd">Birth Year</label>
+    <input type="date" class="form-control" id="actorYearAdd" min="1800" max="2018" [(ngModel)]="bYear" required>
+  </div>
+  <button type="submit" class="btn btn-primary" (click)="onSaveActor()">Save Actor</button>
+</div>
