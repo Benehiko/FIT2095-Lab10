@@ -17,6 +17,7 @@ import {AddmovieactorComponent} from './addmovieactor/addmovieactor.component';
 import {NotfoundComponent} from './notfound/notfound.component';
 
 const appRoutes: Routes = [
+  {path: 'notfound', component: NotfoundComponent},
   {path: 'listactors', component: ListactorsComponent},
   {path: 'addactor', component: AddactorComponent},
   {path: 'updateactor', component: UpdateactorComponent},
@@ -25,9 +26,8 @@ const appRoutes: Routes = [
   {path: 'deletemovie', component: DeletemovieComponent},
   {path: 'addmovie', component: AddmovieComponent},
   {path: 'addmovieactor', component: AddmovieactorComponent},
-  {path: 'notfound', component: NotfoundComponent},
   {path: '', redirectTo: '/listactors', pathMatch: 'full'},
-  {path: '**', component: NotfoundComponent},
+  {path: '**', redirectTo: '/notfound'},
 ];
 
 @NgModule({
@@ -44,7 +44,11 @@ const appRoutes: Routes = [
     NotfoundComponent
   ],
   imports: [
-    RouterModule.forRoot(appRoutes),
+    RouterModule.forRoot(appRoutes, {
+      // Tell the router to use the HashLocationStrategy.
+      useHash: true,
+      enableTracing: true
+    }),
     BrowserModule,
     HttpClientModule,
     FormsModule
